@@ -1,7 +1,6 @@
 # Keyboard Mouser AHK
 
-Overview
-These operation can perform by KEYBOARD.
+These mouse cursor operation can perform by KEYBOARD.
 
 - screen areas dividing recursively,  to move the mouse cursor to the area 
 - 4 direction mouse cursor movement
