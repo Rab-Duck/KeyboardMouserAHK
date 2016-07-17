@@ -1,0 +1,842 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="CONTENT-TYPE" content="text/html; charset=Shift_JIS">
+  <TITLE>Keyboard Mouser AHK マニュアル</TITLE>
+</HEAD>
+
+<BODY text="#000000" bgcolor="#ffffee" link="#0000ff" vlink="#000080" alink="#808000">
+
+<CENTER>
+<h1>
+Keyboard Mouser AHK<br>
+Version 1.0.0 β<br>
+マニュアル
+</h1>
+</CENTER>
+
+<p align="right">
+Copyright &copy; 2014 Rab-Duck
+</p>
+
+
+<CENTER>
+<P>
+このドキュメントは Keyboard Mouser AHK の取扱い方法について記述したものです。
+</P>
+</CENTER>
+
+<hr>
+
+<h2 align="center"><A name="contents">目次</A></h2>
+
+<UL>
+<li><a href="#first">1. はじめに</a>
+	<ul>
+	<li><a href="#about">1.1 機能紹介</a>
+	<li><a href="#env">1.2 動作環境</a>
+	<li><a href="#install">1.3 インストール方法</a>
+	<li><a href="#uninstall">1.4 アンインストール方法</a>
+	<li><a href="#copyright">1.5 配布</a>
+	<li><a href="#exemption">1.6 免責</a>
+	</ul>
+<li><a href="#usage">2. Keyboard Mouser の使い方</a>
+	<ul>
+	<li><a href="#startup">2.1 起動方法</a>
+	<li><a href="#operation">2.2 操作方法</a>
+	<li><a href="#setenv">2.3 動作設定の変更方法 </a>
+	<li><a href="#end">2.4 終了方法</a>
+	</ul>
+<li><a href="#setting">3. 設定例</a>
+	<ul>
+	<li><a href="#ex1">3.1 初期設定（左手でディスプレイ、右手で４方向＋クリック）</a>
+	<li><a href="#ex2">3.2 例その２（両手でディスプレイ）</a>
+	<li><a href="#ex3">3.3 例その３（テンキー） </a>
+	</ul>
+<li><a href="#ahk">4. AHK/AHK_L について</a>
+<li><a href="#support">5. サポート・連絡先等</a>
+</UL>
+
+<hr>
+<h2 align="center"><a name="first"><FONT COLOR="green">1. はじめに</FONT></a></h2>
+
+<HR width="50%">
+
+<h3><a name="about"><FONT COLOR="green">1.1 機能紹介</FONT></a></h3>
+
+<P>
+キーボードのキー配列を活かしてマウス操作が出来るマウスユーティリティーです。
+</P>
+
+<P>
+もともとの発想は、<br>
+キーボードのキー配列をそのままディスプレイにマッピングできないか、<br>
+というところにあります。<br>
+つまり、いわゆるマウスカーソルをキーで動かすというよりは、<br>
+画面の位置をキーボード上でタッチするような、ペンタブレット的インタフェースを意識しています。
+</P>
+<P>
+では、その特色は．．．
+</P>
+<UL>
+  <LI> <P>キーボードの一部を画面に対応したマップ的な移動と４方向移動の組み合わせで、<br>
+	ホームポジションを中心としたキーの範囲内だけでマウスカーソルを自由に移動させることが可能。<br>
+	加えて、クリック、ドラッグ操作もキーボードから可能。<br>
+	（キー設定は変更可能）
+  </P></LI>
+  <li><p>マルチディスプレイ環境にも対応
+  </p></li>
+  <LI> <P>AutoHotKey のスクリプトで作成・提供しているため、<A HREF="http://www.autohotkey.com/">AutoHotKey</A>/<A HREF="http://ahkscript.org/">AutoHotoKeky_L</A> 環境があれば、プログラム部分を含め任意にカスタマイズ可能（AHK_L を推奨）。
+  </P></LI>
+</UL>
+
+<a href="#contents">［目次へ］</a>
+
+<HR width="50%">
+<h3><a name="env"><FONT COLOR="green">1.2 動作環境</FONT></a></h3>
+<P>
+動作確認環境は Windows 2000 ～ Windows 7。<BR>
+基本、 AutoHotKey/AutoHotoKeky_L が動く環境であれば大丈夫だと思います。
+</P>
+<UL>
+  <LI> AHK/AHK_L 環境がある場合 → KeyboardMouser.ahk のスクリプトでそのまま実行可能です（<A HREF="http://ahkscript.org/">AutoHotoKeky_L</A> を推奨）
+  <LI> AHK/AHK_L 環境がない場合 → AHK スクリプトをコンパイルした実行形式 KeyboardMouser.exe(32bit版)、KeyboardMouser_64.exe(64bit版) で利用可能です
+</UL>
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="install"><FONT COLOR="green">1.3 インストール方法</FONT></a></h3>
+
+<OL>
+  <LI>任意のディレクトリに <STRONG><FONT COLOR="blue">KeyboardMouser.ahk か KeyboardMouser.exe/KeyboardMouser_64.exe</FONT></STRONG> を格納</LI>
+</OL>
+
+<P>
+それだけです。
+</P>
+<P>
+インストーラ等は用意していませんので、スタートアップ等への登録は各自でお願いします。
+</P>
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="uninstall"><FONT COLOR="green">1.4 アンインストール方法</FONT></a></h3>
+
+<P>
+独立したフォルダにインストールした場合には、そのフォルダ全体を削除するだけです。
+</P>
+<P>
+もし、他のアプリケーションと同じフォルダにインストールした場合には、次のファイルを消して下さい。
+</P>
+<OL>
+  <LI><P>インストール時に格納したファイル</P>
+  <LI><P>同じディレクトリにある KeyboardMouser.ini</P>
+</OL>
+<P>
+現在はレジストリへの情報格納はしていませんので、レジストリ内の情報削除の必要はありません。
+</P>
+
+
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="copyright"><FONT COLOR="green">1.5 配布</FONT></a></h3>
+
+<P>
+Keyboard Mouser AHK は GPL 2.0 での配布となります。
+</P>
+
+<P>
+商業ベースでの配布や紹介をして頂けた場合には連絡を貰えると嬉しいです。<BR>
+再配布の場合には、ファイルの内容、構成は変更しないようにして下さい。
+</P>
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="exemption"><FONT COLOR="green">1.6 免責</FONT></a></h3>
+
+<P>
+作者は本ソフトウェアを使用して生じた障害、損害については一切の責任を負いません。<br>
+また、作者は本ソフトウェアの修正、及びバージョンアップの義務を負いません。
+</P>
+<P>
+以上、蛇足ながら、悪しからず。
+</P>
+
+<a href="#contents">［目次へ］</a>
+<hr>
+
+<h2 align="center"><a name="usage"><FONT COLOR="green">2. Keyboard Mouser の使い方</FONT></a></h2>
+
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="startup"><FONT COLOR="green">2.1 起動方法</FONT></a></h3>
+
+<P>
+KeyboardMouser.ahk/.exe を起動すると、タスクトレイにアイコンが表示されます。<BR>
+そうすれば正常に起動しています。
+</P>
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="operation"><FONT COLOR="green">2.2 操作方法</FONT></a></h3>
+
+<P>
+操作を開始するには、まず、
+</P>
+<UL>
+  <LI>ホットキーの Ctrl + Alt + 'm' キーを同時に押す（この設定は変更可能）
+</UL>
+<P>
+すると、設定してあるキーボードのキーに対応してディスプレイを分割した画面がでてきます。
+</P>
+<UL>
+  <LI> ディスプレイ上に表示されている対応するキーを押す
+  <LI> tab/shift-tab でフォーカスを移した場所でスペース押し
+</UL>
+<P>
+で、そのエリアにマウスカーソルが移動します。<BR>
+この動作を選んだエリア内に対して再帰的に行うことができます。<br>
+</P>
+<P>
+また、カーソル移動用のキーで４方向の移動もできます。
+</P>
+<P>
+希望の場所に移動できたら、クリック動作用のキーでクリック（左、右、中央、ダブル）動作をして下さい。
+</P>
+■ 操作の概要図（初期設定時）
+<TABLE border="0">
+	<TBODY>
+		<TR  valign="top">
+			<TD>＜画面をキーに対応して分割＋移動＞
+			<TABLE border="1" width=200 height=112 align="center">
+				<TBODY align="center">
+					<TR>
+						<TD>1</TD>
+						<TD>2</TD>
+						<TD>3</TD>
+						<TD>4</TD>
+					</TR>
+					<TR>
+						<TD>q</TD>
+						<TD>w</TD>
+						<TD>e</TD>
+						<TD>r</TD>
+					</TR>
+					<TR>
+						<TD>a</TD>
+						<TD>s</TD>
+						<TD>d</TD>
+						<TD>f</TD>
+					</TR>
+					<TR>
+						<TD>z</TD>
+						<TD>x</TD>
+						<TD>c</TD>
+						<TD>v</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			</TD>
+			<TD>
+			 ＋ 
+			</TD>
+			<TD>
+			<center>＜４方向への移動＞</center>
+			<TABLE align="center">
+				<TBODY>
+					<TR>
+						<TD></TD>
+						<TD>↑k</TD>
+						<TD></TD>
+					</TR>
+					<TR>
+						<TD>← h </TD>
+						<TD></TD>
+						<TD> l →</TD>
+					</TR>
+					<TR>
+						<TD></TD>
+						<TD>↓j</TD>
+						<TD></TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<P>カーソルキーでも<br>４方向移動が可能</P>
+			</TD>
+			<TD>
+			 ＋ 
+			</TD>
+			<TD>＜クリック操作＞
+			<TABLE border="1" align="center">
+				<TBODY align="center">
+					<TR>
+						<TD>左クリック</TD>
+						<TD>u 又は Enter</TD>
+					</TR>
+					<TR>
+						<TD>右クリック</TD>
+						<TD>o 又は Shift+Enter</TD>
+					</TR>
+					<TR>
+						<TD>中クリック</TD>
+						<TD>i 又は Ctrl+Enter</TD>
+					</TR>
+					<TR>
+						<TD>ダブルクリック</TD>
+						<TD>y 又は Alt+Enter</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+				<P>Enter を使った指定はプログラムで固定</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<P>
+■ カーソル移動の加速<BR>
+</P>
+<P>
+Shift キーを押しながらカーソル移動のキーを入力すると、移動量が増加します。<BR>
+増加量は設定で変更可能です。
+</P>
+
+<P>
+■ ドラッグ操作<BR>
+</P>
+<P>
+Alt キーを押しながらクリック操作のキーを入力すると、対応するマウスボタン（左、右、中）でのドラッグ操作が開始します。<BR>
+ドラッグ終了は、任意のクリック用キーの入力です。どのキーでも開始したボタンの終了指示になります。
+</p>
+<p>
+ドラッグ中は、マウスカーソルの移動とクリック操作のみが可能です。
+</P>
+
+<P>
+■ 分割対象をマルチディスプレイ間で移動<BR>
+</P>
+<P>
+Alt キーを押しながらカーソルキーを入力すると、分割対象をマルチディスプレイ間で移動することが可能です。<BR>
+ホットキーを入力直後は現在マウスカーソルが存在するディスプレイが分割指定の対象となりますが、<br>
+Alt＋→か＋↑で次のディスプレイ、Alt＋←か＋↓で前のディスプレイに分割対象を移動できます。<br>
+</P>
+<P>
+ディスプレイ間での移動指示を行うと、必ず移動後のディスプレイ全体での分割状態から始まります。
+</P>
+
+<P>
+■ 処理のキャンセル<BR>
+</P>
+<P>
+途中で処理をキャンセルしたい場合には Esc キーを押して下さい。<BR>
+また、タスク切替のキー（Alt+Tab, Windowsキー+Tab）でも動作がキャンセルされます。
+</P>
+
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="setenv"><FONT COLOR="green">2.3 動作設定の変更方法</FONT></a></h3>
+
+<P>
+現在、
+</P>
+<UL>
+  <LI>動作開始用のホットキーの設定
+  <LI>各種動作用のキー設定
+  <LI>その他、動作の細かい調整
+</UL>
+
+<P>
+といった設定変更が可能です。
+</P>
+
+<P>
+設定の変更を行うには、
+</P>
+<OL>
+  <LI><P>タスクトレイのアイコンを右クリック → メニューから「KM settings...」を選択<BR>
+  <LI><P>ダイアログで各種設定を行う</P></LI>
+</OL>
+<P>
+という手順です。<br>
+また、環境設定のダイアログを表示中にはホットキー＋このソフトの動作は無効化されます。
+</P>
+
+<P>
+簡単に各項目を説明します。
+</P>
+<DL>
+  <DT><STRONG>● Hotkey</STRONG></DT>
+  <DD>
+  <P>
+  このソフトを使ってマウス操作を開始するための Hotkey 設定です。
+  </P>
+  <P>
+  記述方法は AHK の記述方法そのままの形で、修飾キーには次のような文字を使います。
+  </P>
+  <table border=1>
+	<tbody>
+	<tr>
+	<td><strong>+</strong></td>
+	<td>Shift</td>
+	</tr>
+	<tr>
+	<td><strong>^</strong></td>
+	<td>Control</td>
+	</tr>
+	<tr>
+	<td><strong>!</strong></td>
+	<td>Alt</td>
+	</tr>
+	<tr>
+	<td><strong>#</strong></td>
+	<td>Windowsロゴキー</td>
+	</tr>
+	</tbody>
+  </table>
+  <P>
+  例えば「+^!k」ならば「shift」＋「ctrl」＋「Alt」＋「k」の同時押し、「#k」ならば「Windowsロゴキー」と「k」の同時押しの設定となります。<br>
+  また、「Pause」「Break」などのキー名による指定も可能です。<br>
+  仮想キーコード/VKXX や スキャンコード/SCYYY での指定の場合には、どちらか正しく動く方で指定して下さい。
+  </P>
+  <P>
+  詳しくは、AHK のホットキーについて解説している<A HREF="http://ahkwiki.net/Hotkeys#.E4.BF.AE.E9.A3.BE.E3.82.B7.E3.83.B3.E3.83.9C.E3.83.AB">こちらの修飾シンボル</A>や<A HREF="http://ahkwiki.net/KeyList">こちらのキーリスト</A>のページなどを参照して下さい。
+  </P>
+  </DD>
+  <DT><STRONG>● Display Area Keys</STRONG></DT>
+  <DD>
+  <P>
+  ディスプレイを分割してマウスカーソルを移動させる際に利用する文字列を、４列まで指定できます。<br>
+  ここに設定した文字×列数でディスプレイが分割され、１文字毎に分割した１マス分に対応されます。
+  </P>
+  <p>
+  列数は４列全てを使わなくてもかまいませんし、また１列内の文字数の制限は明確にはありません。<br>
+  が、無理な値を設定すると実用上問題があるので、その辺りは各自で調整して使いやすい範囲で設定してみて下さい。
+  </p>
+  <p>
+  「Max KB Depth」は何回まで再帰的に画面へのマッピングを行うかの設定になります。
+  </p>
+  </DD>
+  <DT><STRONG>● Mouse Movement Keys</STRONG></DT>
+  <DD>
+  <P>
+  マウスカーソルを４方向に移動させるためのキーと移動量を設定します。<br>
+  ここは「Pause」「Break」などの<A HREF="http://ahkwiki.net/KeyList">AHK でのキー名</a>による指定も可能です。<br>
+  仮想キーコード/VKXX や スキャンコード/SCYYY での指定の場合には、どちらか正しく動く方で指定して下さい。
+  </P>
+  </DD>
+  <DT><STRONG>● Mouse Clicks </STRONG></DT>
+  <DD>
+  <P>
+  マウスの各クリック操作（左、右、中、ダブル）を行うためのキーを設定します。<br>
+  ここは「Pause」「Break」などの<A HREF="http://ahkwiki.net/KeyList">AHK でのキー名</a>による指定も可能です。<br>
+  仮想キーコード/VKXX や スキャンコード/SCYYY での指定の場合には、どちらか正しく動く方で指定して下さい。
+  </P>
+  </DD>
+  <DT><STRONG>● Visualization Trancsparency</STRONG></DT>
+  <DD>
+  <p>
+  ディスプレイ上にキーに対応する場所を表示するための画面の透明度を設定します。
+  </p>
+</DL>
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="end"><FONT COLOR="green">2.4 終了方法</FONT></a></h3>
+
+<P>
+Keyboard Mouser を終了したい場合には、
+</P>
+
+<UL>
+  <LI>タスクトレイのアイコンで右クリック → 表示されたメニューで「Exit」を選択
+</UL>
+
+<P>
+で可能です。
+</P>
+
+<a href="#contents">［目次へ］</a>
+
+<hr>
+
+<h2 align="center"><a name="setting">3. 設定例<FONT COLOR="green"></FONT></a></h2>
+
+
+<a href="#contents">［目次へ］</a>
+<HR width="50%">
+<h3><a name="ex1"><FONT COLOR="green">3.1 初期設定（左手でディスプレイ、右手で４方向＋クリック）</FONT></a></h3>
+<P>
+「<a href="#operation">2.2 操作方法</a>」で図示している初期設定の意図としては、左手がディスプレイ分割と対応させたキー指定、右手で４方向＋クリック指定と役割分担できるようにしています。
+</P>
+
+<h3><a name="ex2"><FONT COLOR="green">3.2 例その２（両手でディスプレイ＋マウス操作）</FONT></a></h3>
+<P>
+次のような設定をすれば、両手のキーに満遍なくディスプレイ分割＋マウス操作を対応することも可能です。<BR>
+</P>
+
+<table>
+  <tr>
+  <td>
+  <table border=1>
+	<tr>
+	<td>設定項目</td>
+	<td>設定値</td>
+	</tr>
+	<tr>
+	<td>Key Line 1</td>
+	<td>12347890</td>
+	</tr>
+	<tr>
+	<td>Key Line 2</td>
+	<td>qweruiop</td>
+	</tr>
+	<tr>
+	<td>Key Line 3</td>
+	<td>asdfjkl;</td>
+	</tr>
+	<tr>
+	<td>Key Line 4</td>
+	<td>zxcvm,./</td>
+	</tr>
+  </table>
+  </td>
+  <td>
+  → 
+  </td>
+  <td>
+  <TABLE border="0" align="center">
+	<TR>
+		<TD>
+		<TABLE border="1" width=200 height=112 align="center">
+			<TBODY align="center">
+			<TR>
+				<TD>1</TD>
+				<TD>2</TD>
+				<TD>3</TD>
+				<TD>4</TD>
+				<TD>7</TD>
+				<TD>8</TD>
+				<TD>9</TD>
+				<TD>0</TD>
+			</TR>
+			<TR>
+				<TD>q</TD>
+				<TD>w</TD>
+				<TD>e</TD>
+				<TD>r</TD>
+				<TD>u</TD>
+				<TD>i</TD>
+				<TD>o</TD>
+				<TD>p</TD>
+			</TR>
+			<TR>
+				<TD>a</TD>
+				<TD>s</TD>
+				<TD>d</TD>
+				<TD>f</TD>
+				<TD>j</TD>
+				<TD>k</TD>
+				<TD>l</TD>
+				<TD>;</TD>
+			</TR>
+			<TR>
+				<TD>z</TD>
+				<TD>x</TD>
+				<TD>c</TD>
+				<TD>v</TD>
+				<TD>m</TD>
+				<TD>,</TD>
+				<TD>.</TD>
+				<TD>/</TD>
+			</TR>
+			</tbody>
+		</TABLE>
+		</TD>
+	</TR>
+  </TABLE>
+  </td>
+  </tr>
+</TABLE>
+<P>
+■ マウスカーソル移動設定
+</P>
+<table border=0>
+  <tr>
+  <td>
+  <table border=1>
+    <tr>
+    <td>設定項目</td>
+    <td>設定値</td>
+    </tr>
+    <tr>
+    <td>Up</td>
+    <td>y</td>
+    </tr>
+    <tr>
+    <td>Down</td>
+    <td>b</td>
+    </tr>
+    <tr>
+    <td>Left</td>
+    <td>g</td>
+    </tr>
+    <tr>
+    <td>Right</td>
+    <td>h</td>
+    </tr>
+  </table>
+  </td>
+  <td>
+   → 
+  </td>
+  <td>
+  キーボードの y, b, g, h
+  </td>
+  </tr>
+</table>
+
+<P>
+■ クリック動作設定
+</P>
+<table border=1>
+	<tr>
+	<td>設定項目</td>
+	<td>設定値</td>
+	<td>対応キー</td>
+	</tr>
+	<tr>
+	<td>Left Click</td>
+	<td>vk1D 又は sc079</td>
+	<td>無変換</td>
+	</tr>
+	<tr>
+	<td>Right Click</td>
+	<td>vk1C 又は sc07B</td>
+	<td>変換</td>
+	</tr>
+	<tr>
+	<td>Middle Click</td>
+	<td>Space</td>
+	<td>空白（スペース）</td>
+	</tr>
+	<tr>
+	<td>Double Click</td>
+	<td>vkF2 又は sc070</td>
+	<td>ひらがな/カタカナ</td>
+	</tr>
+</table>
+「vkYY」や「scXXX」の指定はうまく動作する方を使って下さい。
+
+<h3><a name="ex3"><FONT COLOR="green">3.3 例その３（テンキーでディスプレイ＋マウス操作）</FONT></a></h3>
+<P>
+Key Line 1～4 の４列分全てを設定する必要はないので、
+次のような設定をすれば、テンキーをディスプレイ分割＋マウス操作に対応することも可能です。<BR>
+</P>
+
+<table>
+  <tr>
+  <td>
+  <table border=1>
+	<tr>
+	<td>設定項目</td>
+	<td>設定値</td>
+	</tr>
+	<tr>
+	<td>Key Line 1</td>
+	<td>789</td>
+	</tr>
+	<tr>
+	<td>Key Line 2</td>
+	<td>456</td>
+	</tr>
+	<tr>
+	<td>Key Line 3</td>
+	<td>123</td>
+	</tr>
+	<tr>
+	<td>Key Line 4</td>
+	<td>（設定しない）</td>
+	</tr>
+  </table>
+  </td>
+  <td>
+  → 
+  </td>
+  <td>
+  <TABLE border="0" align="center">
+	<TR>
+		<TD>
+		<TABLE border="1" width=200 height=112 align="center">
+			<TBODY align="center">
+			<TR>
+				<TD>7</TD>
+				<TD>8</TD>
+				<TD>9</TD>
+			</TR>
+			<TR>
+				<TD>4</TD>
+				<TD>5</TD>
+				<TD>6</TD>
+			</TR>
+			<TR>
+				<TD>1</TD>
+				<TD>2</TD>
+				<TD>3</TD>
+			</TR>
+			</tbody>
+		</TABLE>
+		</TD>
+	</TR>
+  </TABLE>
+  </td>
+  </tr>
+</TABLE>
+
+<P>
+■ マウスカーソル移動設定
+</P>
+<table border=0>
+  <tr>
+  <td>
+  <table border=1>
+    <tr>
+    <td>設定項目</td>
+    <td>設定値</td>
+    </tr>
+    <tr>
+    <td>Up</td>
+    <td>NumpadUp</td>
+    </tr>
+    <tr>
+    <td>Down</td>
+    <td>NumpadDown</td>
+    </tr>
+    <tr>
+    <td>Left</td>
+    <td>NumpadLeft</td>
+    </tr>
+    <tr>
+    <td>Right</td>
+    <td>NumpadRight</td>
+    </tr>
+  </table>
+  </td>
+  <td>
+  → 
+  </td>
+  <td>
+  テンキー上の ↑, ↓, ←, →<BR>
+  (NumLock が OFF時)
+  </td>
+  </tr>
+</table>
+
+<P>
+■ クリック動作設定
+</P>
+<table border=1>
+	<tr>
+	<td>設定項目</td>
+	<td>設定値</td>
+	<td>対応キー</td>
+	</tr>
+	<tr>
+	<td>Left Click</td>
+	<td>Numpad0</td>
+	<td>テンキー上の「0」</td>
+	</tr>
+	<tr>
+	<td>Right Click</td>
+	<td>NumpadEnter</td>
+	<td>テンキー上の「Enter」</td>
+	</tr>
+	<tr>
+	<td>Middle Click</td>
+	<td>NumpadDot</td>
+	<td>テンキー上の「.」(ドット)</td>
+	</tr>
+	<tr>
+	<td>Double Click</td>
+	<td>NumpadAdd</td>
+	<td>テンキー上の「+」</td>
+	</tr>
+</table>
+
+<a href="#contents">［目次へ］</a>
+
+<hr>
+
+<h2 align="center"><a name="ahk"><FONT COLOR="green">4. AHK/AHK_L について</FONT></a></h2>
+
+<P>
+このプログラムは AutoHotkey/AutoHotkey_L のスクリプトで作成されています。<br>
+AutoHotkey/AutoHotkey_L とは
+</p>
+<blockquote>
+ホットキーへの機能の割り当てなど常駐ソフトの作成に特化したスクリプトエンジン。多彩なコマンドが用意されており、GUIを持ったプログラムの作成も可能。<br>
+任意のキーの割り当て変更、マクロ、ウインドウ操作 ...<br>
+オープンソースの簡易プログラム言語、Windows用フリーソフト。<br>
+（下記の「AutoHotkey Wiki」より引用）
+</blockquote>
+<P>
+です。<br>
+より詳しくは <a href="http://ahkwiki.net/">AutoHotkey Wiki</a> や、そのリンク先の公式サイトなどを参照してみて下さい。
+</P>
+<p>
+また、このスクリプトは次のものを参考にして作成しました。<br>
+役立つスクリプトのソースコードを公開して下さりありがとうございます。
+</p>
+<ul>
+	<li><a href="https://github.com/theborg3of5/ahk/blob/master/Mouser.ahk">Mouser</a></li>
+	<li><a href="http://www.autohotkey.com/docs/scripts/KeyboardOnScreen.htm">On-Screen Keyboard</a></li>
+	<li><a href="http://ux.getuploader.com/autohotkeyl/download/19/MouseMove%2B.ahk">MouseMove+</a> </li>
+	<li><a href="http://www.autohotkey.com/board/topic/19990-windowpad-window-moving-tool/">WindowPad</a></li>
+</ul>
+<p>
+また、私は AHK のスクリプト作成は初心者のため、もし次のような点のアドバイス・修正したコードがあればメール等で教えていただけたら助かります。
+</p>
+<ul>
+	<li>AHK スクリプトとしてみて、より適切な書き方に直した方が良いところ</li>
+	<li><a href="http://hp.vector.co.jp/authors/VA018351/mglahk.html">MouseGestureL.ahk</a> の plugin 化のために便利・適切な書き換え方</li>
+</ul>
+
+<a href="#contents">［目次へ］</a>
+
+<hr>
+
+<h2 align="center"><a name="support"><FONT COLOR="green">5. サポート・連絡先等</FONT></a></h2>
+
+<P>
+作者の連絡先／Web サイトは、
+</P>
+<ul>
+  <LI>メール： Rab-Duck &lt;rabduck.software@gmail.com&gt; 
+  <LI>Web サイト：<A HREF="http://hp.vector.co.jp/authors/VA022068/">http://hp.vector.co.jp/authors/VA022068/</A>
+</ul>
+<P>
+です。
+</P>
+<P>
+要望、質問、バグ、その他不明点等ありましたら、上記のサイトを確認してみるか、あるいは直接上記のアドレスへ電子メールを送って下さい。
+</P>
+<P>
+KeyboardMouser AHK の最新版は、上記サイトや <A href="http://www.vector.co.jp/">Vector</A> で入手可能です。<BR>
+Vector では、<A href="http://www.vector.co.jp/vpack/filearea/win/util/operate/mouse/">マウス用ユーティリティ</A> のジャンルで掲載されていると思われます。
+</P>
+
+<a href="#contents">［目次へ］</a>
+<hr>
+
+<ADDRESS>
+(c) Rab-Duck &lt;rabduck.software@gmail.com&gt;, 2014
+</ADDRESS>
+
+<P>
+DATE:2014/05/14
+</P>
+
+</body>
+</html>
