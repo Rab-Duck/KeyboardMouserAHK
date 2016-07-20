@@ -15,9 +15,9 @@ Key setting, etc. can be customized
  
 This mouse utility is that you can operate ALL mouse cursor operations by the keyboard.
 
-The original idea is that,
-Can be able to map the key layout of the keyboard as it is to the display?
-In other words, It is not moving mouse cursor,
+The original idea is that,  
+Can be able to map the key layout of the keyboard as it is to the display?  
+In other words, It is not moving mouse cursor,  
 To touch the position of the keyboard is to touch the position of the screen, like a pen tablet interface.
 
 the features are...
@@ -28,7 +28,7 @@ In addition, click, drag operation is also possible by the keyboard.
 
 - Supports multi-display environment
 
-- This aplication made by AutoHotKey script, if there is a AutoHotKey / AutoHotoKeky_L environment(recommended AHK_L), you can customize the entire program.
+- This aplication made by AutoHotKey script, so if you have AutoHotKey/AutoHotoKeky_L environment(recommended AHK_L), you can customize the entire program.
 
 ## Requirement & Install
 
